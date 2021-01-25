@@ -1,8 +1,8 @@
 export interface userModel {
-    name: string;
+    login: string;
     avatar_url: string
     location: string;
-    email: string;
-    followers: number;
-    following: number;
+    url: string;
+    company:string;
+    
 }

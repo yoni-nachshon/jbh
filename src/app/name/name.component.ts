@@ -9,12 +9,24 @@ import { NameService } from '../services/name.service';
 })
 export class NameComponent implements OnInit, OnChanges {
   @Input()userName:any;
-  info:any;
+  info = {
+    login:null,
+    avatar_url:null,
+    location:null,
+    url:null, 
+    company:null
+  };
+ 
 
   constructor(private nameService:NameService) { 
    
   }
   ngOnChanges(changes: SimpleChanges): void {
+    this.nameService.get(this.userName).subscribe(info => { 
+      this.info.login=info.login, this.info.location=info.location,
+      this.info.url=info.url, this.info.company=info.company,
+      this.info.avatar_url=info.avatar_url});
+      
     if(this.userName!==changes.userName.currentValue){
       this.userName = changes.userName.currentValue;
     }
@@ -22,9 +34,7 @@ export class NameComponent implements OnInit, OnChanges {
   
 
   ngOnInit(): void {
-    this.nameService.get(this.userName).subscribe(info =>{
-      this.info = info;
-    });
+   
 
   }
  
