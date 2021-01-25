@@ -1,0 +1,11 @@
+<div class="container" >
+  <div class="card-body">
+<div class="input-group col-4">
+<input type="text" class="form-control" placeholder="Type a username" #un>
+<button class="btn btn-primary" (click)="getUserName(un.value)">Search</button>
+<app-name [userName]="userName" *ngIf="userName"></app-name>  
+</div>
+</div>
+</div>
+
+
